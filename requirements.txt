@@ -1,0 +1,10 @@
+tensorflow>=2.10
+keras
+numpy
+pandas
+matplotlib
+scikit-learn
+opencv-python
+flask
+gunicorn
+pillow

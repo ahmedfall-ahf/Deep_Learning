@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 import os
-len(os.listdir("../data/cell_images/train/Parasitized")), len(os.listdir("../data/cell_images/train/Uninfected"))
+#len(os.listdir("../data/cell_images/train/Parasitized")), len(os.listdir("../data/cell_images/train/Uninfected"))
 
 # ✅ Utilisation d'un chemin absolu pour le modèle
 MODEL_PATH = os.path.join(app.root_path, "../src/models/vgg16_tl.h5")

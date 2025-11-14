@@ -1,8 +1,19 @@
+import os
+os.environ["TF_FORCE_UNIFIED_MEMORY"] = "1"
+os.environ["TF_ONEDNN_DISABLE"] = "1"
+
 from flask import Flask, render_template, request
 import tensorflow as tf
 from keras.preprocessing.image import load_img, img_to_array
 import numpy as np
 import os
+
+def get_model():
+    global model
+    if model is None:
+        from keras.models import load_model
+        model = load_model("vgg16_tl.h5")
+    return model
 
 app = Flask(__name__)
 

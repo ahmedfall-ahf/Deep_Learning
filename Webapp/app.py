@@ -1,5 +1,5 @@
 import os
-os.environ["TF_FORCE_UNIFIED_MEMORY"] = "1"
+os.environ["TF_FORCE_UNIFIED_MEMORY"] = "-1"
 os.environ["TF_ONEDNN_DISABLE"] = "1"
 
 from flask import Flask, render_template, request

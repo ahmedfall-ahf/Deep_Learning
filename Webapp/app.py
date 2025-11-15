@@ -18,7 +18,7 @@ def get_model():
 app = Flask(__name__)
 
 # --- Chargement du modèle ---
-MODEL_PATH = os.path.join(app.root_path, "../src/models/vgg16_tl.h5")
+MODEL_PATH = "vgg16_tl.h5"
 
 if not os.path.exists(MODEL_PATH):
     raise FileNotFoundError(f"Modèle introuvable : {MODEL_PATH}")

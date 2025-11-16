@@ -1,0 +1,20 @@
+# Fichiers lourds de modèles
+*.h5
+*.hdf5
+*.pkl
+*.joblib
+*.ckpt
+
+# Python
+__pycache__/
+*.pyc
+
+# Environnements
+.env
+
+# Uploads utilisateurs
+static/uploads/
+
+# Dossier models local si nécessaire
+Webapp/models/
+src/models/

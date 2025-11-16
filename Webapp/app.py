@@ -6,18 +6,10 @@ from flask import Flask, render_template, request
 import tensorflow as tf
 from keras.preprocessing.image import load_img, img_to_array
 import numpy as np
-import os
-
-def get_model():
-    global model
-    if model is None:
-        from keras.models import load_model
-        model = load_model("vgg16_tl.h5")
-    return model
 
 app = Flask(__name__)
 
-# --- Chargement du modèle ---
+# ---- Chargement du modèle ----
 MODEL_PATH = os.path.join(app.root_path, "vgg16_tl.h5")
 
 if not os.path.exists(MODEL_PATH):
@@ -43,9 +35,9 @@ def index():
             filepath = os.path.join(upload_folder, f.filename)
             f.save(filepath)
 
-            # --- Prétraitement EXACT comme l'entraînement ---
+            # --- Prétraitement ---
             img = load_img(filepath, target_size=IMG_SIZE)
-            x = img_to_array(img) / 255.0  # ⭐ OBLIGATOIRE
+            x = img_to_array(img) / 255.0
             x = np.expand_dims(x, axis=0)
 
             # --- Prédiction ---
@@ -53,8 +45,6 @@ def index():
             print("🔍 Output du modèle :", preds)
 
             score = float(preds[0][0])
-
-            # 0 = Uninfected, 1 = Parasitized
             label = "Parasitized" if score < 0.5 else "Uninfected"
 
             pred_text = f"{label} (score={score:.3f})"
